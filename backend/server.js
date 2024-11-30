@@ -32,9 +32,6 @@ app.use("/user",userRouter);
 
 app.use("/user/data",auth,OpRouter);
 
-app.get("/",auth,(req,res)=>{
-    res.send("hello");
-})
 
 app.use(express.static(path.join(_dirname,"/client/build")));
 app.get('*',(req,res)=>{
