@@ -5,7 +5,7 @@ import axios from 'axios';
 function GroupBlocks({ grpName, grpId, setViewGroup ,refresh,setRefresh}) {
 
   const view=(grp)=>{
-    axios.get(`http://localhost:4001/user/data/getGroupData/${grp}`,{withCredentials:true})
+    axios.get(`https://expensemanager-1-0p9e.onrender.com/user/data/getGroupData/${grp}`,{withCredentials:true})
     .then((response)=>{
       console.log(response.data.response);
       setViewGroup(response.data.response);
@@ -18,7 +18,7 @@ function GroupBlocks({ grpName, grpId, setViewGroup ,refresh,setRefresh}) {
   const leaveGroup = () => {
     const userName=localStorage.getItem("name");
     const userId=localStorage.getItem("user_id")
-    axios.post(`http://localhost:4001/user/data/leaveGroup`,{ groupId:grpId,userId,userName }, {withCredentials: true})
+    axios.post(`https://expensemanager-1-0p9e.onrender.com/user/data/leaveGroup`,{ groupId:grpId,userId,userName }, {withCredentials: true})
     .then((response) => {
         console.log(response.data.response);
         setViewGroup(response.data.response); // Assuming `setViewGroup` updates the UI

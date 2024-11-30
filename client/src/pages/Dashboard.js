@@ -56,7 +56,7 @@ function Dashboard() {
 
 
   const getBud = () => {
-    axios.get("http://localhost:4001/user/data/Budget/get", {
+    axios.get("https://expensemanager-1-0p9e.onrender.com/user/data/Budget/get", {
       withCredentials: true
     }).then((response) => {
       const budgetData = response.data.data;
@@ -69,7 +69,7 @@ function Dashboard() {
   };
 
   const getInc = () => {
-    axios.get("http://localhost:4001/user/data/Income/get", { withCredentials: true })
+    axios.get("https://expensemanager-1-0p9e.onrender.com/user/data/Income/get", { withCredentials: true })
       .then((response) => {
         setIsLoggedIn(true);
         const incomeData = response.data.data;
@@ -90,7 +90,7 @@ function Dashboard() {
   };
 
   const getExp = () => {
-    axios.get("http://localhost:4001/user/data/expense/get", { withCredentials: true })
+    axios.get("https://expensemanager-1-0p9e.onrender.com/user/data/expense/get", { withCredentials: true })
       .then((response) => {
         const expenseData = response.data.data;
         setExpense(expenseData);

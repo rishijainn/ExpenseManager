@@ -15,7 +15,7 @@ function SendBlock({ avialMembers, setAddContribution, grpId, userId, mapped, co
             .map((name) => mapped.find((item) => item.name === name)?.id)
             .filter(Boolean);
 
-        axios.post("http://localhost:4001/user/data/addContribution", {
+        axios.post("https://expensemanager-1-0p9e.onrender.com/user/data/addContribution", {
             groupId: grpId,
             paidBy: userId,
             payerName,

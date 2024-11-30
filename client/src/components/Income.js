@@ -17,7 +17,7 @@ function Income({ Income, setIncome, loading, setLoading,setTotalEnc }) {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:4001/user/data/Income/get', { withCredentials: true })
+      .get('https://expensemanager-1-0p9e.onrender.com/user/data/Income/get', { withCredentials: true })
       .then((response) => {
         setIncome(response.data.data);
       })
@@ -44,7 +44,7 @@ function Income({ Income, setIncome, loading, setLoading,setTotalEnc }) {
             const originalIncome = Income.find((inc) => inc._id === editingId);
             const originalAmount = parseFloat(originalIncome.amount);
       axios
-        .patch(`http://localhost:4001/user/data/Income/update/${editingId}`, newIncome, { withCredentials: true })
+        .patch(`https://expensemanager-1-0p9e.onrender.com/user/data/Income/update/${editingId}`, newIncome, { withCredentials: true })
         .then((response) => {
           setIncome(Income.map((inc) => (inc._id === editingId ? response.data.data : inc)));
           setEditingId(null);
@@ -60,7 +60,7 @@ function Income({ Income, setIncome, loading, setLoading,setTotalEnc }) {
     } else {
       // Add new income
       axios
-        .post('http://localhost:4001/user/data/Income/post', newIncome, { withCredentials: true })
+        .post('https://expensemanager-1-0p9e.onrender.com/user/data/Income/post', newIncome, { withCredentials: true })
         .then((response) => {
           setIncome([...Income, response.data.data]);
           setAdding(false);
@@ -77,7 +77,7 @@ function Income({ Income, setIncome, loading, setLoading,setTotalEnc }) {
 
   const deleteHandler = (_id,amount) => {
     axios
-      .delete(`http://localhost:4001/user/data/Income/delete/${_id}`, { withCredentials: true })
+      .delete(`https://expensemanager-1-0p9e.onrender.com/user/data/Income/delete/${_id}`, { withCredentials: true })
       .then(() => {
         setIncome(Income.filter((inc) => inc._id !== _id));
         setTotalEnc((prevTotal)=>prevTotal-amount);

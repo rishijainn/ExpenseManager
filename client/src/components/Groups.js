@@ -14,7 +14,7 @@ function Groups() {
 
     useEffect(() => {
         const uId=localStorage.getItem('user_id');
-        axios.get(`http://localhost:4001/user/data/getGroup/${uId}`, { withCredentials: true })
+        axios.get(`https://expensemanager-1-0p9e.onrender.com/user/data/getGroup/${uId}`, { withCredentials: true })
             .then((response) => {
                 setGroup(response.data.response);
                 console.log(response.data.response);
@@ -29,7 +29,7 @@ function Groups() {
         const name = e.target[0].value;
         axios
             .post(
-                'http://localhost:4001/user/data/createGroup',
+                'https://expensemanager-1-0p9e.onrender.com/user/data/createGroup',
                 { name },
                 { withCredentials: true }
             )
@@ -42,7 +42,7 @@ function Groups() {
                 // Then, add the user as a member to the newly created group
                 const userId = localStorage.getItem('user_id');
                 const userName = localStorage.getItem('name');
-                axios.post(`http://localhost:4001/user/data/addMember/${response.data.response._id}`, { userId, userName }, { withCredentials: true })
+                axios.post(`https://expensemanager-1-0p9e.onrender.com/user/data/addMember/${response.data.response._id}`, { userId, userName }, { withCredentials: true })
                     .then((response) => {
                         console.log(response);
                         

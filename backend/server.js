@@ -20,7 +20,7 @@ connection(url).then(()=>{
     console.log("there is some issue in connecting database")
 })
 app.use(cors({
-    origin: 'http://localhost:3000', // Frontend URL
+    origin: 'https://expensemanager-1-0p9e.onrender.com', // Frontend URL
     credentials: true, // Allow cookies to be sent
 }));
 const _dirname=path.resolve();

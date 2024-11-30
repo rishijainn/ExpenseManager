@@ -19,7 +19,7 @@ function SignUp() {
 
         console.log(formData, "after submitting the form");
 
-        axios.post("http://localhost:4001/user/signUp", {
+        axios.post("https://expensemanager-1-0p9e.onrender.com/user/signUp", {
             name: formData.name,
             email: formData.email,
             password: formData.password

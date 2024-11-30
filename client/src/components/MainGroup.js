@@ -23,7 +23,7 @@ function MainGroup({ grpName, grpId, onClose }) {
 
     const settle = (expId) => {
         console.log(expId)
-        axios.delete(`http://localhost:4001/user/data/settleExpense/${expId}`, { withCredentials: true })
+        axios.delete(`https://expensemanager-1-0p9e.onrender.com/user/data/settleExpense/${expId}`, { withCredentials: true })
             .then((response) => {
                 setRefresh(!refresh);
                 console.log(response.data);
@@ -35,7 +35,7 @@ function MainGroup({ grpName, grpId, onClose }) {
             });
     }
     const fetchContributions = () => {
-        axios.get(`http://localhost:4001/user/data/getContribution/${grpId}`, { withCredentials: true })
+        axios.get(`https://expensemanager-1-0p9e.onrender.com/user/data/getContribution/${grpId}`, { withCredentials: true })
             .then((response) => {
                 setContributions(response.data);
                 console.log(response.data);
@@ -47,7 +47,7 @@ function MainGroup({ grpName, grpId, onClose }) {
     };
 
     const getMembers = () => {
-        axios.get(`http://localhost:4001/user/data/getMember/${grpId}`, { withCredentials: true })
+        axios.get(`https://expensemanager-1-0p9e.onrender.com/user/data/getMember/${grpId}`, { withCredentials: true })
             .then((response) => {
                 setavailMembers(response.data.response.memberName);
                 const a = response.data.response.memberName;
@@ -63,10 +63,10 @@ function MainGroup({ grpName, grpId, onClose }) {
     const AddHandler = (e) => {
         e.preventDefault();
         const id = e.target[0].value;
-        axios.get(`http://localhost:4001/user/getUser/${id}`, { withCredentials: true })
+        axios.get(`https://expensemanager-1-0p9e.onrender.com/user/getUser/${id}`, { withCredentials: true })
             .then((response) => {
                 const userData = response.data.response;
-                axios.post(`http://localhost:4001/user/data/addMember/${grpId}`, { userId: userData._id, userName: userData.name }, { withCredentials: true })
+                axios.post(`https://expensemanager-1-0p9e.onrender.com/user/data/addMember/${grpId}`, { userId: userData._id, userName: userData.name }, { withCredentials: true })
                     .then(() => {
                         getMembers();
                         toast.success('member added successfully')

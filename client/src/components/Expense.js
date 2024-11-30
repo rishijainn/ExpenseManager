@@ -15,7 +15,7 @@ function Expense({ Expense, setExpense, loading, setLoading ,setTotalExp}) {
 
     useEffect(() => {
         setLoading(true);
-        axios.get("http://localhost:4001/user/data/expense/get", { withCredentials: true })
+        axios.get("https://expensemanager-1-0p9e.onrender.com/user/data/expense/get", { withCredentials: true })
             .then((response) => {
                 setExpense(response.data.data);
                 
@@ -43,7 +43,7 @@ function Expense({ Expense, setExpense, loading, setLoading ,setTotalExp}) {
             // Update expense
             const originalExpense = Expense.find((exp) => exp._id === editingId);
             const originalAmount = parseFloat(originalExpense.amount);
-            axios.patch(`http://localhost:4001/user/data/expense/update/${editingId}`, newExpense, { withCredentials: true })
+            axios.patch(`https://expensemanager-1-0p9e.onrender.com/user/data/expense/update/${editingId}`, newExpense, { withCredentials: true })
                 .then((response) => {
                     setExpense(Expense.map((exp) => (exp._id === editingId ? response.data.data : exp)));
                     setEditingId(null);
@@ -59,7 +59,7 @@ function Expense({ Expense, setExpense, loading, setLoading ,setTotalExp}) {
                 });
         } else {
             // Add expense
-            axios.post("http://localhost:4001/user/data/expense/post", newExpense, { withCredentials: true })
+            axios.post("https://expensemanager-1-0p9e.onrender.com/user/data/expense/post", newExpense, { withCredentials: true })
                 .then((response) => {
                     const addedExpense=response.data.data;
                     setExpense([...Expense, response.data.data]);
@@ -78,7 +78,7 @@ function Expense({ Expense, setExpense, loading, setLoading ,setTotalExp}) {
     };
 
     const deleteHandler = (_id,amount) => {
-        axios.delete(`http://localhost:4001/user/data/expense/delete/${_id}`, { withCredentials: true })
+        axios.delete(`https://expensemanager-1-0p9e.onrender.com/user/data/expense/delete/${_id}`, { withCredentials: true })
             .then(() => {
                 setExpense(Expense.filter((exp) => exp._id !== _id));
                 setTotalExp((prevTotal)=>prevTotal-amount);
