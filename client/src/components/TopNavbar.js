@@ -83,10 +83,13 @@ function TopNavbar({ setActiveSection, isLoggedIn, setIsLoggedIn, budgets, Incom
       <div  className="flex-1">
         {/* Hamburger Icon for small screens */}
         <div className="md:hidden block">
-          <IoReorderThreeOutline className='w-8 h-10 cursor-pointer' onClick={(e) => {
+          {isLoggedIn?
+          (<IoReorderThreeOutline className='w-8 h-10 cursor-pointer' onClick={(e) => {
             e.stopPropagation();
             setIsSideBar(!isSideBar)
-          }} />
+          }} />):
+          (null)}
+          
         </div>
       </div>
 
