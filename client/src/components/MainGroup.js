@@ -98,7 +98,7 @@ function MainGroup({ grpName, grpId, onClose }) {
     pauseOnHover
     style={{
         zIndex: 9999, // Keeps it above other elements
-        marginTop: '50px' // Adjust this value to move it down
+        marginTop: '60px' // Adjust this value to move it down
     }}
 />
 

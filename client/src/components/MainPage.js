@@ -224,10 +224,17 @@ function MainPage({ totalBud, totalEnc, totalExp, expense, setLoading, loading }
                 </form>
 
                 {finalAns && (
-                    <div
+                    <div>
+                        <div
                         className="bg-white border border-gray-200 rounded-lg shadow-lg p-8 prose max-w-none"
                         dangerouslySetInnerHTML={{ __html: finalAns }}
                     ></div>
+                    <button onClick={setFinalAns(null)} className="mt-4 bg-red-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+                        Close
+                    </button>
+                    </div>
+                    
+                    
                 )}
             </div>
         </div>
