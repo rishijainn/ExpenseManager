@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the Toastify styles
+
 
 function SignUp() {
     const navigate = useNavigate();
@@ -11,28 +14,31 @@ function SignUp() {
         password: ''
     });
 
-    const [errors, setErrors] = useState({
-        name: '',
-        email: '',
-        password: '',
-        general: ''
-    });
-
     const submitHandler = (event) => {
         event.preventDefault();
 
-        // Clear previous errors
-        setErrors({ name: '', email: '', password: '', general: '' });
+        console.log(formData, "after submitting the form");
 
         axios.post("https://expensemanager-1-0p9e.onrender.com/user/signUp", {
             name: formData.name,
             email: formData.email,
             password: formData.password
-        }).then(() => {
+        }).then((response) => {
             navigate('/login');
         }).catch((error) => {
-            const err = error.response?.data?.message || "An unexpected error occurred.";
-            setErrors({ ...errors, general: err });
+            setFormData({
+                name: '',
+                email: '',
+                password: ''
+            });
+            const err=error.response.data.message;
+            if(err==="email already exist"){
+                navigate('/login');
+            }
+            if(err==="there is some error in SignUp"){
+                toast.error(err);
+            }
+            
         });
     };
 
@@ -47,43 +53,43 @@ function SignUp() {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+            <ToastContainer/>
             <div className="bg-white shadow-2xl p-8 rounded-lg w-full max-w-md md:max-w-lg lg:max-w-xl mx-4">
                 <h2 className="text-4xl font-bold mb-6 text-center text-gray-800">Create Your Account</h2>
                 <form className="space-y-6" onSubmit={submitHandler}>
                     <div>
                         <input 
                             type="text" 
-                            name="name"
+                            name='name'
                             value={formData.name}
                             onChange={ChangeHandler}
                             placeholder="Enter your Name" 
-                            className={`w-full p-4 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200 ease-in-out`}
+                            required
+                            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200 ease-in-out"
                         />
-                        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                     </div>
                     <div>
                         <input 
                             type="email" 
-                            name="email"
+                            name='email'
                             value={formData.email}
                             onChange={ChangeHandler}
                             placeholder="Enter your Email ID" 
-                            className={`w-full p-4 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200 ease-in-out`}
+                            required
+                            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200 ease-in-out"
                         />
-                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                     </div>
                     <div>
                         <input 
                             type="password"
-                            name="password" 
+                            name='password' 
                             value={formData.password}
                             onChange={ChangeHandler}
                             placeholder="Enter your Password" 
-                            className={`w-full p-4 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200 ease-in-out`}
+                            required
+                            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200 ease-in-out"
                         />
-                        {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
                     </div>
-                    {errors.general && <p className="text-red-500 text-sm mt-2 text-center">{errors.general}</p>}
                     <div className="text-center">
                         <button 
                             type="submit" 
