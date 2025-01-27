@@ -55,7 +55,7 @@ function MainPage({ totalBud, totalEnc, totalExp, expense, setLoading, loading }
 
         setLoading(true);
 
-        axios.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAvzjNE-xRGMYNn9Y7epl3MvuniAiz8_tI",
+        axios.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA58ho_64s0kqAvoBztIexzcvZFsGR9x0A",
             { "contents": [{ "parts": [{ "text": prompt }] }] }
         )
             .then((response) => {
@@ -81,7 +81,7 @@ function MainPage({ totalBud, totalEnc, totalExp, expense, setLoading, loading }
     const AiHandler = (e) => {
         setLoading(true);
         e.preventDefault();
-        axios.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAvzjNE-xRGMYNn9Y7epl3MvuniAiz8_tI",
+        axios.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA58ho_64s0kqAvoBztIexzcvZFsGR9x0A",
             { "contents": [{ "parts": [{ "text": `${question}. answer this question if it is related to finnace athere wise just return "please enter finance related question" and Do not include any extra formatting, such as backticks or code blocks. ` }] }] }
         )
             .then((response) => {
@@ -96,7 +96,7 @@ function MainPage({ totalBud, totalEnc, totalExp, expense, setLoading, loading }
 
     const shortSearchHandler = (no) => {
         setLoading(true);
-        axios.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAvzjNE-xRGMYNn9Y7epl3MvuniAiz8_tI",
+        axios.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA58ho_64s0kqAvoBztIexzcvZFsGR9x0A",
             { "contents": [{ "parts": [{ "text": no }] }] }
         )
             .then((response) => {
