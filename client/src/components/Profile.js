@@ -28,7 +28,7 @@ function Profile({ setIsProfile, profileImage, isProfile, setProfileImage, setIs
         }
 
         // Fetch user data
-        axios.get(`https://expensemanager-1-0p9e.onrender.com/user/getUser/${id}`, { withCredentials: true })
+        axios.get(`https://expense-manager-backend-eight.vercel.app/user/getUser/${id}`, { withCredentials: true })
             .then((response) => {
                 const userData = response.data.response;
                 setName(userData.name);
@@ -41,7 +41,7 @@ function Profile({ setIsProfile, profileImage, isProfile, setProfileImage, setIs
     }, [id, gender]);
 
     const updateGenderInBackend = (newGender) => {
-        axios.patch(`https://expensemanager-1-0p9e.onrender.com/user/editGender/${email}/${newGender}`, {}, { withCredentials: true })
+        axios.patch(`https://expense-manager-backend-eight.vercel.app/user/editGender/${email}/${newGender}`, {}, { withCredentials: true })
             .then((response) => {
                 console.log("Gender updated successfully:", response.data);
             })
@@ -72,7 +72,7 @@ function Profile({ setIsProfile, profileImage, isProfile, setProfileImage, setIs
     
 
     const SignOutHandler = () => {
-        axios.post("https://expensemanager-1-0p9e.onrender.com/user/signout", {}, { withCredentials: true })
+        axios.post("https://expense-manager-backend-eight.vercel.app/user/signout", {}, { withCredentials: true })
             .then(() => {
                 localStorage.removeItem('isLoggedIn');
                 setIsLoggedIn(false);
@@ -84,7 +84,7 @@ function Profile({ setIsProfile, profileImage, isProfile, setProfileImage, setIs
     };
 
     const changeNameHandler = () => {
-        axios.patch(`https://expensemanager-1-0p9e.onrender.com/user/UpdateName/${email}`, { name: newData.name }, { withCredentials: true })
+        axios.patch(`https://expense-manager-backend-eight.vercel.app/user/UpdateName/${email}`, { name: newData.name }, { withCredentials: true })
             .then(() => {
                 setName(newData.name);
                 setIsChangeName(false);
@@ -97,7 +97,7 @@ function Profile({ setIsProfile, profileImage, isProfile, setProfileImage, setIs
     const changeEmailHandler = () => {
         let OTP = Math.floor(1000 + Math.random() * 9000);
         localStorage.setItem('otp', OTP);
-        axios.patch(`https://expensemanager-1-0p9e.onrender.com/user/EmailVerify/${newData.email}/${OTP}`, { withCredentials: true })
+        axios.patch(`https://expense-manager-backend-eight.vercel.app/user/EmailVerify/${newData.email}/${OTP}`, { withCredentials: true })
             .then(() => {
                 setIsChangeEmail(false);
                 setIsEmailChange(true);
@@ -116,7 +116,7 @@ function Profile({ setIsProfile, profileImage, isProfile, setProfileImage, setIs
         if (otpValue === storedOtp) {
             alert("OTP Verified Successfully!");
             setIsEmailChange(false);
-            axios.patch(`https://expensemanager-1-0p9e.onrender.com/user/editEmail/${email}`, { email: newData.email }, { withCredentials: true })
+            axios.patch(`https://expense-manager-backend-eight.vercel.app/user/editEmail/${email}`, { email: newData.email }, { withCredentials: true })
                 .then(() => {
                     console.log("Email updated successfully.");
                     setEmail(newData.email);

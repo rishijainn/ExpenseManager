@@ -27,7 +27,7 @@ function Navbar({ setActiveSection, isLoggedIn, setIsLoggedIn, profileImage, set
     }, [setProfileImage]); // Only run this effect when setProfileImage changes (or on mount)
 
     const SignOutHandler = () => {
-        axios.post("https://expensemanager-1-0p9e.onrender.com/user/signout", {}, { withCredentials: true })
+        axios.post("https://expense-manager-backend-eight.vercel.app/user/signout", {}, { withCredentials: true })
             .then((response) => {
                 localStorage.removeItem('isLoggedIn');
                 setIsLoggedIn(false);

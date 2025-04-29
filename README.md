@@ -18,7 +18,7 @@ Ask questions and get actionable financial advice and tips to enhance your portf
 
 Live Demo
 Experience the live version here:
-https://expensemanager-1-0p9e.onrender.com/
+https://expense-manager-backend-eight.vercel.app/
 
 Note: If you encounter issues opening the link directly, copy-paste it into your browser.
 

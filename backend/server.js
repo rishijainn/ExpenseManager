@@ -20,7 +20,7 @@ connection(url).then(()=>{
     console.log("there is some issue in connecting database")
 })
 app.use(cors({
-    origin: 'https://expensemanager-1-0p9e.onrender.com', // Frontend URL
+    origin: 'https://expense-manager-backend-eight.vercel.app', // Frontend URL
     credentials: true, // Allow cookies to be sent
 }));
 const _dirname=path.resolve();

@@ -19,7 +19,7 @@ function SignUp() {
 
         console.log(formData, "after submitting the form");
 
-        axios.post("https://expensemanager-1-0p9e.onrender.com/user/signUp", {
+        axios.post("https://expense-manager-backend-eight.vercel.app/user/signUp", {
             name: formData.name,
             email: formData.email,
             password: formData.password

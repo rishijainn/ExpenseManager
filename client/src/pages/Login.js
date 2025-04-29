@@ -17,7 +17,7 @@ function Login() {
     const submitHandler=(event)=>{
         event.preventDefault();
 
-        axios.post("https://expensemanager-1-0p9e.onrender.com/user/login",{
+        axios.post("https://expense-manager-backend-eight.vercel.app/user/login",{
             email:formData.email,
             password:formData.password
         },{

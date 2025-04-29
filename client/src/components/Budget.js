@@ -27,7 +27,7 @@ function Budget({ budgets, setBudgets, loading, setTotalBud}) {
             const originalBudget = budgets.find((bud) => bud._id === editingBudgetId);
             const originaltotalBudget = parseFloat(originalBudget.totalBudget);
       axios
-        .patch(`https://expensemanager-1-0p9e.onrender.com/user/data/Budget/update/${editingBudgetId}`, newBudget, { withCredentials: true })
+        .patch(`https://expense-manager-backend-eight.vercel.app/user/data/Budget/update/${editingBudgetId}`, newBudget, { withCredentials: true })
         .then((response) => {
           setBudgets(budgets.map((budget) => (budget._id === editingBudgetId ? response.data.data : budget)));
           setShowForm(false);
@@ -41,7 +41,7 @@ function Budget({ budgets, setBudgets, loading, setTotalBud}) {
         });
     } else {
       axios
-        .post('https://expensemanager-1-0p9e.onrender.com/user/data/Budget/post', newBudget, { withCredentials: true })
+        .post('https://expense-manager-backend-eight.vercel.app/user/data/Budget/post', newBudget, { withCredentials: true })
         .then((response) => {
           setBudgets([...budgets, response.data.data]);
           setShowForm(false);
@@ -69,7 +69,7 @@ function Budget({ budgets, setBudgets, loading, setTotalBud}) {
 
   const deleteHandler = (budget) => {
     axios
-      .delete(`https://expensemanager-1-0p9e.onrender.com/user/data/Budget/delete/${budget._id}`, { withCredentials: true })
+      .delete(`https://expense-manager-backend-eight.vercel.app/user/data/Budget/delete/${budget._id}`, { withCredentials: true })
       .then(() => {
         setBudgets(budgets.filter((bud) => bud._id !== budget._id));
         setTotalBud((prevTotal)=>prevTotal-budget.totalBudget);
