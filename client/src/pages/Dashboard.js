@@ -32,7 +32,7 @@ function Dashboard() {
   const id=localStorage.getItem("user_id");
 
   useEffect(() => {
-     
+     console.log("hello");
       getBud(); 
       getExp();
       getInc();

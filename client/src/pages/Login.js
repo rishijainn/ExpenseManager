@@ -31,7 +31,7 @@ function Login() {
             localStorage.setItem("gender",gender);
             localStorage.setItem('user_id',id);
             localStorage.setItem('email',formData.email);
-            localStorage.setItem("isLoggedIn","true");
+            localStorage.setItem("isLoggedIn",true);
             localStorage.setItem("name",response.data.isUser.name);
         }).catch((error)=>{
           const err=error.response.data.message;
