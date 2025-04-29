@@ -21,7 +21,7 @@ function Dashboard() {
   const [totalBud, setTotalBud] = useState(0);
   const [totalEnc, setTotalEnc] = useState(0);
   const [totalExp, setTotalExp] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [theme, setTheme] = useState(true); // true for day, false for night
   const [profileImage, setProfileImage] = useState(null);
   const [isProfile,setIsProfile]=useState('');
