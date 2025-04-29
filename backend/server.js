@@ -31,6 +31,9 @@ app.use(cookieParser());
 app.use("/user",userRouter);
 
 app.use("/user/data",auth,OpRouter);
+app.get("/",(req,res)=>{
+    <h1>Hello welcomw to backend</h1>
+})
 
 
 app.use(express.static(path.join(_dirname,"/client/build")));
